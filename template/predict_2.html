@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Predict diabetes 1</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+ <div class="login">
+	<h1>Please, fill this form</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+        <b>Do you have high BP?:</b>
+            <p></p><input type=radio name="HighBP" value="1"> Yes <br>
+            <p></p><input type=radio name="HighBP" value="0"> No<br>
+        <br>
+    	<b>Do you have high HighChol?:</b>
+            <p></p><input type=radio name="HighChol" value="1"> Yes <br>
+            <p></p><input type=radio name="HighChol" value="0"> No<br>
+        <br>
+        <b>Did you check your cholesterol level last 5 years?:</b>
+            <p></p><input type=radio name="CholCheck" value="1"> Yes <br>
+            <p></p><input type=radio name="CholCheck" value="0"> No<br>
+        <br>
+        <b>BMI</b>
+        <input type="text" name="BMI" placeholder="Add your BMI" ><br>
+
+        <b>Do you smoke?:</b>
+            <p></p><input type=radio name="Smoker" value="1"> Yes <br>
+            <p></p><input type=radio name="Smoker" value="0"> No<br>
+        <br>
+        <b>Did you have stroke?:</b>
+            <p></p><input type=radio name="Stroke" value="1"> Yes <br>
+            <p></p><input type=radio name="Stroke" value="0"> No<br>
+        <br>
+        <b>Did you have Heart Attack?:</b>
+            <p></p><input type=radio name="HeartDiseaseorAttack" value="1"> Yes <br>
+            <p></p><input type=radio name="HeartDiseaseorAttack" value="0"> No<br>
+        <br>
+
+        <b>Did you exercise last 30 days?:</b>
+            <p></p><input type=radio name="PhysActivity" value="1"> Yes <br>
+            <p></p><input type=radio name="PhysActivity" value="0"> No<br>
+        <br>
+        <b>Do you consume 1 or more fruit per day?:</b>
+            <p></p><input type=radio name="Fruits" value="1"> Yes <br>
+            <p></p><input type=radio name="Fruits" value="0"> No<br>
+        <br>
+        <b>Do you consume 1 or more vegetable per day?:</b>
+            <p></p><input type=radio name="Veggies" value="1"> Yes <br>
+            <p></p><input type=radio name="Veggies" value="0"> No<br>
+        <br>
+
+        <b>Do you drink more then 7 standard drinks(for women) or 14 standard drinks(for men) per week?:</b>
+            <p></p><input type=radio name="HvyAlcoholConsump" value="1"> Yes <br>
+            <p></p><input type=radio name="HvyAlcoholConsump" value="0"> No<br>
+        <br>
+        <b>Do you have any kind of health care coverage, including health insurance?:</b>
+            <p></p><input type=radio name="AnyHealthcare" value="1"> Yes <br>
+            <p></p><input type=radio name="AnyHealthcare" value="0"> No<br>
+        <br>
+        <b>Was there a time in the past 12 months when you needed to see a doctor but could not because of cost?:</b>
+            <p></p><input type=radio name="NoDocbcCost" value="1"> Yes <br>
+            <p></p><input type=radio name="NoDocbcCost" value="0"> No<br>
+        <br>
+        <b>How you evaluate that in general your health?:</b>
+            <p></p><input type=radio name="GenHlth" value="1"> Excellent <br>
+            <p></p><input type=radio name="GenHlth" value="2"> Very good<br>
+            <p></p><input type=radio name="GenHlth" value="3"> Good<br>
+            <p></p><input type=radio name="GenHlth" value="4"> Fair<br>
+            <p></p><input type=radio name="GenHlth" value="5"> Poor<br>
+        <br>
+        <b>How many days during the past 30 days was your mental health not good?</b>
+            <p></p><input type=text name="MentHlth" placeholder="From 1 to 30"> <br>
+        <br>
+        <b>How many days during the past 30 days was your mental health not good?</b>
+            <p></p><input type=text name="PhysHlth" placeholder="From 1 to 30"> <br>
+        <br>
+        <b>Do you have serious difficulty walking or climbing stairs?</b>
+            <p></p><input type=radio name="DiffWalk" value="1"> Yes <br>
+            <p></p><input type=radio name="DiffWalk" value="0"> No <br>
+        <br>
+
+        <b>Sex:</b>
+            <p></p><input type=radio name="Sex" value="1"> Man <br>
+            <p></p><input type=radio name="Sex" value="0"> Woman<br>
+        <br>
+
+        <b>Age:</b>
+            <p><input name="Age" type="radio" value="1">18-24<br>
+            <input name="Age" type="radio" value="2">24-29<br>
+            <input name="Age" type="radio" value="3">30-34<br>
+            <input name="Age" type="radio" value="4">35-39<br>
+            <input name="Age" type="radio" value="5">40-44<br>
+            <input name="Age" type="radio" value="6">45-49<br>
+            <input name="Age" type="radio" value="7">50-54<br>
+            <input name="Age" type="radio" value="8">55-59<br>
+            <input name="Age" type="radio" value="9">60-64<br>
+            <input name="Age" type="radio" value="10">65-69<br>
+            <input name="Age" type="radio" value="11">70-74<br>
+            <input name="Age" type="radio" value="12">75-80<br>
+            <input name="Age" type="radio" value="13">more then 80<br></p>
+
+        <b>Education:</b>
+            <p><input name="Education" type="radio" value="1"> Did not graduate<br>
+            <input name="Education" type="radio" value="2">Graduated elementary school<br>
+            <input name="Education" type="radio" value="3">Graduated high school<br>
+            <input name="Education" type="radio" value="4">Attended college<br>
+            <input name="Education" type="radio" value="5">Graduated college<br>
+            <input name="Education" type="radio" value="6">Graduated university<br>
+
+        <b>Income</b></p>
+            <p><input name="Income" type="radio" value="1"> <10,000 <br>
+            <input name="Income" type="radio" value="2">10,000–15,000<br>
+            <input name="Income" type="radio" value="3">15,000–20,000<br>
+            <input name="Income" type="radio" value="4">20,000–25,000<br>
+            <input name="Income" type="radio" value="5">25,000–35,000<br>
+            <input name="Income" type="radio" value="6">35,000–50,000<br>
+            <input name="Income" type="radio" value="7">50,001–75,000<br>
+            <input name="Income" type="radio" value="8">>75,000<br>
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict diabetes possibility</button>
+    </form>
+
+   <br>
+   <br>
+
+
+ </div>
+
+
+</body>
+</html>
