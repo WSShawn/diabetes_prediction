@@ -204,7 +204,7 @@ intervaltree==2.1.0
 ipykernel==5.3.4
 ipykernel==6.0.3
 ipython-genutils==0.2.0
-ipython-sql==0.3.9
+jupysql
 ipython==7.26.0
 ipython==7.9.0
 ipywidgets==7.7.1
